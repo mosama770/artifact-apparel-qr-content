@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Artifact Apparel - Wearable History</title>
+    <!-- Load Tailwind CSS for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Using Inter for modern readability and a professional feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#3a3a3a', // Dark charcoal/Egyptian night
+                        'secondary-gold': '#f0d1a1', // Sand/Gold accent
+                        'tertiary-green': '#38a169', // Strong sustainability green
+                        'bg-light': '#fefefe',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar styling for better aesthetic */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f0d1a1;
+            border-radius: 10px;
+        }
+        /* Custom CSS to show a loading/error state */
+        .loading-mask {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        /* Historical content background is dynamic */
+        .historical-content {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="500" fill="#f0d1a1" opacity="0.1">☥</text></svg>');
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans antialiased text-primary-dark">
+
+    <div id="loading" class="loading-mask hidden">
+        <p class="text-xl text-primary-dark">Loading Artifact Story...</p>
+    </div>
+
+    <div id="app" class="max-w-xl mx-auto min-h-screen bg-bg-light shadow-2xl transition duration-500">
+        
+        <!-- Header & Branding -->
+        <header class="p-6 bg-primary-dark text-white rounded-b-lg shadow-xl">
+            <h1 class="text-3xl font-bold tracking-wider">ARTIFACT APPAREL</h1>
+            <p class="text-secondary-gold text-sm font-light mt-1">Unraveling the Story on the Thread</p>
+        </header>
+
+        <!-- Product Image & Identifier Section (DYNAMIC) -->
+        <section class="p-6">
+            <h2 id="product-name" class="text-2xl font-bold mb-4">Product Name</h2>
+            <div class="bg-gray-200 h-64 w-full rounded-xl overflow-hidden shadow-md">
+                <!-- Product Image Placeholder -->
+                <img id="product-image" 
+                     src="https://placehold.co/800x600/3a3a3a/f0d1a1?text=Product+Image" 
+                     alt="Sustainable T-Shirt" 
+                     class="w-full h-full object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x600/3a3a3a/f0d1a1?text=Image+Not+Found';"
+                     loading="lazy">
+            </div>
+            <div class="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                <p class="text-xs text-gray-600 uppercase font-medium">Artifact ID: <span id="artifact-id" class="font-mono text-primary-dark tracking-wider">Loading...</span></p>
+            </div>
+        </section>
+
+        <!-- Historical Content Section (DYNAMIC) -->
+        <section class="p-6 border-t border-gray-200 historical-content">
+            <h3 class="text-2xl font-bold mb-4 flex items-center text-primary-dark">
+                <span class="mr-2 text-secondary-gold text-3xl">🏛️</span>
+                The Story Behind the Design
+            </h3>
+            <p id="design-story" class="text-lg mb-4">
+                Loading design story...
+            </p>
+            <div class="bg-white p-4 rounded-xl shadow-inner border-l-4 border-secondary-gold">
+                <p id="deep-dive" class="text-sm italic text-gray-700">
+                    Loading deep dive content...
+                </p>
+            </div>
+        </section>
+
+        <!-- Sustainability/Supply Chain Section (DYNAMIC) -->
+        <section class="p-6 border-t border-gray-200">
+            <h3 class="text-2xl font-bold mb-6 flex items-center text-tertiary-green">
+                <span class="mr-2 text-3xl">🌍</span>
+                Your Sustainable Journey
+            </h3>
+            
+            <!-- Key Sustainability Stats -->
+            <div class="flex justify-around text-center mb-6">
+                <div class="flex flex-col items-center">
+                    <p id="water-saved" class="text-3xl font-extrabold text-tertiary-green">--</p>
+                    <p class="text-xs text-gray-600 uppercase">Less Water Used</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <p id="material-type" class="text-3xl font-extrabold text-tertiary-green">--</p>
+                    <p class="text-xs text-gray-600 uppercase">Material Type</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <p id="chemical-dyes" class="text-3xl font-extrabold text-tertiary-green">0%</p>
+                    <p class="text-xs text-gray-600 uppercase">Chemical Dyes</p>
+                </div>
+            </div>
+
+            <!-- Supply Chain Steps Mockup (Dynamically injected) -->
+            <div id="supply-chain" class="space-y-4">
+                <!-- Content injected here -->
+            </div>
+        </section>
+        
+        <!-- Call to Action & Navigation Footer -->
+        <section class="p-6 border-t border-gray-200 bg-secondary-gold/20">
+            <h3 class="text-xl font-bold mb-3">Explore Other Artifacts</h3>
+            <div class="flex space-x-4 mb-4">
+                 <!-- Example of how to link to other pages/kings -->
+                <a href="#king=tutankhamun" class="flex-1 text-center py-2 border border-primary-dark text-primary-dark font-bold rounded-xl shadow-md hover:bg-secondary-gold transition duration-300" onclick="loadContentFromHash('tutankhamun', event)">Tutankhamun</a>
+                <a href="#king=ramesses" class="flex-1 text-center py-2 border border-primary-dark text-primary-dark font-bold rounded-xl shadow-md hover:bg-secondary-gold transition duration-300" onclick="loadContentFromHash('ramesses', event)">Ramesses II</a>
+            </div>
+
+            <a href="#" class="block w-full text-center py-3 bg-primary-dark text-white font-bold rounded-xl shadow-lg hover:bg-gray-700 transition duration-300">
+                Shop The Full Giza Green Collection
+            </a>
+            <p class="text-center text-xs text-gray-600 mt-3">Follow us on Social: @ArtifactApparel</p>
+        </section>
+
+    </div>
+
+    <script>
+        // --- 1. ARTIFACT DATA MODEL (The Content CMS) ---
+        const artifactData = {
+            'tutankhamun': {
+                productName: "The Tut's Legacy Tee (Feather of Ma'at)",
+                artifactId: "AA-EGY-TUT-2025",
+                designStory: "The design features a stylized feather motif, representing Ma'at (truth and justice), a core principle often associated with the restoration efforts of the young Pharaoh **Tutankhamun** after his father's radical reign.",
+                deepDive: "Tutankhamun, the 'Boy King,' reigned briefly but achieved immortality when his nearly intact tomb was discovered in 1922. His legacy was defined by his role in reversing the controversial religious reforms of Akhenaten.",
+                imageText: "Image: Tut's Legacy Tee",
+                imageUrl: "https://placehold.co/800x600/10b981/fff?text=TUTANKHAMUN+ARTIFACT",
+                waterSaved: "80%",
+                material: "Hemp Blend",
+                supplyChain: [
+                    { step: "Regenerative Farming", detail: "Hemp grown in the Mediterranean region, actively regenerating soil health." },
+                    { step: "Eco-Friendly Dyeing", detail: "Naturally dyed in Italy using certified closed-loop systems." },
+                    { step: "Artisan Printing", detail: "Printed with water-based inks by certified Fair Labor partners in Tunisia." }
+                ]
+            },
+            'ramesses': {
+                productName: "The Ramesses Power Tee (Khepresh Crown)",
+                artifactId: "AA-EGY-RAM-2025",
+                designStory: "This print features the Khepresh (blue war crown) and a powerful chariot outline, symbolizing the great military and construction leader **Ramesses II**.",
+                deepDive: "Ramesses II, or Ramesses the Great, was arguably the most powerful Pharaoh of the New Kingdom. He is famous for the Battle of Kadesh and his monumental building projects, including the great temples of Abu Simbel.",
+                imageText: "Image: Ramesses Power Tee",
+                imageUrl: "https://placehold.co/800x600/f59e0b/fff?text=RAMESSES+II+ARTIFACT",
+                waterSaved: "70%",
+                material: "Recycled PET",
+                supplyChain: [
+                    { step: "Waste Sourcing", detail: "Recycled polyester sourced from ocean-bound plastic in Southeast Asia." },
+                    { step: "Fiber Blending", detail: "Blended with organic cotton in a low-energy facility in India." },
+                    { step: "Quality Finishing", detail: "Assembled and quality checked by a women-led co-op in Vietnam." }
+                ]
+            }
+            // Add more kings/artifacts here: 'cleopatra', 'akhenaten', etc.
+        };
+
+        // --- 2. DYNAMIC CONTENT LOADING FUNCTION ---
+
+        function updateSupplyChain(steps) {
+            const container = document.getElementById('supply-chain');
+            container.innerHTML = ''; // Clear previous steps
+
+            steps.forEach((item, index) => {
+                const stepElement = document.createElement('div');
+                stepElement.className = 'flex items-center space-x-4';
+                stepElement.innerHTML = `
+                    <span class="text-xl text-tertiary-green">${index + 1}.</span>
+                    <div class="flex-1 p-3 bg-tertiary-green/10 rounded-lg">
+                        <p class="font-semibold">${item.step}</p>
+                        <p class="text-sm text-gray-600">${item.detail}</p>
+                    </div>
+                `;
+                container.appendChild(stepElement);
+            });
+        }
+
+        function loadContent(key) {
+            const data = artifactData[key];
+            const app = document.getElementById('app');
+            const loading = document.getElementById('loading');
+
+            if (!data) {
+                // Handle case where URL has an invalid king
+                app.innerHTML = '<div class="loading-mask"><p class="text-xl text-primary-dark">Error: Artifact not found. Please scan a valid QR code.</p></div>';
+                return;
+            }
+
+            // Update Text Content
+            document.getElementById('page-title').textContent = `Artifact Apparel - ${data.productName}`;
+            document.getElementById('product-name').textContent = data.productName;
+            document.getElementById('artifact-id').textContent = data.artifactId;
+            document.getElementById('design-story').innerHTML = data.designStory;
+            document.getElementById('deep-dive').innerHTML = `**Deep Dive:** ${data.deepDive}`;
+            
+            // Update Image and Alt Text
+            document.getElementById('product-image').src = data.imageUrl;
+            document.getElementById('product-image').alt = data.imageText;
+
+            // Update Sustainability Stats
+            document.getElementById('water-saved').textContent = data.waterSaved;
+            document.getElementById('material-type').textContent = data.material;
+            
+            // Update Supply Chain Steps
+            updateSupplyChain(data.supplyChain);
+            
+            // Show content
+            loading.classList.add('hidden');
+            app.classList.remove('hidden'); 
+        }
+
+        function loadContentFromHash(defaultKey, event) {
+            // Prevent default hash link navigation if triggered by a click
+            if(event) event.preventDefault(); 
+            
+            // 1. Determine the King/Artifact ID from the URL hash
+            const hash = window.location.hash.substring(1); // Removes the '#'
+            const params = new URLSearchParams(hash);
+            let key = params.get('king') || defaultKey; 
+
+            // 2. Check if the key is valid, otherwise default to the first entry
+            if (!artifactData[key]) {
+                 key = Object.keys(artifactData)[0];
+            }
+
+            // 3. Update the content and the URL hash
+            if (window.location.hash !== `#king=${key}`) {
+                 window.location.hash = `king=${key}`;
+            }
+            loadContent(key);
+        }
+
+        // --- 3. EVENT LISTENERS ---
+
+        // Load content when the page loads
+        window.onload = () => loadContentFromHash(Object.keys(artifactData)[0]); // Default to first king if no hash
+
+        // Reload content if the hash changes (e.g., user clicks a navigation link)
+        window.addEventListener('hashchange', () => loadContentFromHash(Object.keys(artifactData)[0]));
+        
+    </script>
+</body>
+</html>
