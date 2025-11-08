@@ -51,6 +51,12 @@
             background-size: 80%;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="500" fill="#f0d1a1" opacity="0.1">☥</text></svg>');
         }
+        /* The active class styling is now redundant but kept in case navigation is re-added */
+        .nav-button.active {
+            background-color: #3a3a3a;
+            color: white;
+            border-color: #3a3a3a;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans antialiased text-primary-dark">
@@ -129,17 +135,13 @@
             </div>
         </section>
         
-        <!-- Call to Action & Navigation Footer -->
+        <!-- Call to Action Footer (NO INTERNAL NAVIGATION) -->
         <section class="p-6 border-t border-gray-200 bg-secondary-gold/20">
-            <h3 class="text-xl font-bold mb-3">Explore Other Artifacts</h3>
-            <div class="flex space-x-4 mb-4">
-                 <!-- Example of how to link to other pages/kings -->
-                <a href="#king=tutankhamun" class="flex-1 text-center py-2 border border-primary-dark text-primary-dark font-bold rounded-xl shadow-md hover:bg-secondary-gold transition duration-300" onclick="loadContentFromHash('tutankhamun', event)">Tutankhamun</a>
-                <a href="#king=ramesses" class="flex-1 text-center py-2 border border-primary-dark text-primary-dark font-bold rounded-xl shadow-md hover:bg-secondary-gold transition duration-300" onclick="loadContentFromHash('ramesses', event)">Ramesses II</a>
-            </div>
+            <h3 class="text-xl font-bold mb-3">Shop The Full Collection</h3>
+            
 
             <a href="#" class="block w-full text-center py-3 bg-primary-dark text-white font-bold rounded-xl shadow-lg hover:bg-gray-700 transition duration-300">
-                Shop The Full Giza Green Collection
+                Explore All Artifacts
             </a>
             <p class="text-center text-xs text-gray-600 mt-3">Follow us on Social: @ArtifactApparel</p>
         </section>
@@ -182,6 +184,8 @@
             // Add more kings/artifacts here: 'cleopatra', 'akhenaten', etc.
         };
 
+        let lastLoadedKey = null;
+
         // --- 2. DYNAMIC CONTENT LOADING FUNCTION ---
 
         function updateSupplyChain(steps) {
@@ -202,13 +206,23 @@
             });
         }
 
+        function setActiveNav(key) {
+            // This function is now mostly redundant but kept for future proofing 
+            // if you decide to add navigation back.
+            document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`nav-${key}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+
         function loadContent(key) {
             const data = artifactData[key];
             const app = document.getElementById('app');
             const loading = document.getElementById('loading');
 
             if (!data) {
-                // Handle case where URL has an invalid king
+                // If the key is invalid or missing, show a generic error/default content
                 app.innerHTML = '<div class="loading-mask"><p class="text-xl text-primary-dark">Error: Artifact not found. Please scan a valid QR code.</p></div>';
                 return;
             }
@@ -231,39 +245,41 @@
             // Update Supply Chain Steps
             updateSupplyChain(data.supplyChain);
             
+            // Set last loaded key
+            lastLoadedKey = key;
+
             // Show content
             loading.classList.add('hidden');
             app.classList.remove('hidden'); 
         }
 
-        function loadContentFromHash(defaultKey, event) {
-            // Prevent default hash link navigation if triggered by a click
-            if(event) event.preventDefault(); 
-            
+        function loadContentFromHash() {
             // 1. Determine the King/Artifact ID from the URL hash
             const hash = window.location.hash.substring(1); // Removes the '#'
             const params = new URLSearchParams(hash);
-            let key = params.get('king') || defaultKey; 
-
-            // 2. Check if the key is valid, otherwise default to the first entry
-            if (!artifactData[key]) {
+            let key = params.get('king'); 
+            
+            // 2. If no key is found, default to the first entry in the data model
+            if (!key || !artifactData[key]) {
                  key = Object.keys(artifactData)[0];
+                 // Enforce the hash in the URL for the default page
+                 if (window.location.hash !== `#king=${key}`) {
+                    window.location.hash = `king=${key}`;
+                    return; // Return immediately, the hashchange listener will call this function again
+                 }
             }
 
-            // 3. Update the content and the URL hash
-            if (window.location.hash !== `#king=${key}`) {
-                 window.location.hash = `king=${key}`;
-            }
+            // 3. Load content based on the final key
             loadContent(key);
         }
 
         // --- 3. EVENT LISTENERS ---
 
-        // Load content when the page loads
-        window.onload = () => loadContentFromHash(Object.keys(artifactData)[0]); // Default to first king if no hash
+        // Load content on initial page load
+        window.onload = loadContentFromHash; 
 
-        // Reload content if the hash changes (e.g., user clicks a navigation link)
-        window.addEventListener('hashchange', () => loadContentFromHash(Object.keys(artifactData)[0]));
+        // Reload content when the hash changes (though this shouldn't happen without manual hash editing now)
+        window.addEventListener('hashchange', loadContentFromHash);
         
     </script>
 </body>
