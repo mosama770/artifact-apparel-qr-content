@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artifact Apparel - Wearable History</title>
     <!-- Use cache-busting on the Tailwind CSS link to force a fresh download -->
-    <script src="https://cdn.tailwindcss.com?v=4"></script>
+    <script src="https://cdn.tailwindcss.com?v=5"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Using Inter for a clean, modern aesthetic and Font Awesome for icons -->
@@ -75,20 +75,19 @@
     // --- 1. DATA MODEL (The CMS for the QR Code Content) ---
 
     // IMPORTANT: The key used here (e.g., 'tutankhamun') MUST match the URL hash parameter
-    // Example QR Code URL: https://mosama770.github.io/artifact-apparel-qr-content/#king=tutankhamun
     const artifactData = {
         'tutankhamun': {
             name: "The Tut's Legacy Tee",
             material: "Organic Hemp Blend",
             artifactID: "AA-EGY-TUT-2025",
-            // Base64 Image data for Tutankhamun's Gold Mask
-            imageUrl: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAEAAQADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAwQBAgUABgf/xAA5EAACAgIBAgUCBQMEAgIDAQACAQIDBBEFEgYxQRMUIjJRUmFxgRQHQgkWQoEzcrEkJEOh8ENj/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAEDAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A9H8f+P3F+nL+Z/g/v/o9Z/r/j+z/l/i+v8Ag/v7f0vj+7/N/m7fT/M+z/o/e+n+V/e+n/i+j/T+O7P3/wBv+z/X/E9X/S93+e7/S/N7/8AP7X2/wC5/v/ANX+5v7v9f8AM+7/o+x9P+c+r/wBD/v7f/R+7/T9r/O+1/wBf6X3/APW/N9v/N+v/AJf63w/S+l8f1f7/wCX7/8Axfu/f/J/m/7P/l/a/n/f8Apf39/wDS/v7f/R/v/wBn/v8A/f/5/wDp/wD/2Q==",
-            designStory: "The central print is a minimalist representation of the **Feather of Ma'at** (Justice and Balance). It symbolizes a return to ethical order.",
-            deepDive: "Tutankhamun, the 'Boy King,' symbolizes a return to balance. His brief but critical reign restored the traditional religious order after the chaos of Akhenaten's monotheism. This mirrors our mission to return balance to the environment through truly sustainable and ethical practices. The discovery of his tomb in 1922 revealed unparalleled craftsmanship and timeless design—principles we weave into every stitch, creating garments built for permanence, not disposal.",
+            // Base64 SVG Icon: Stylized Ankh (Symbol of Life/Balance)
+            imageUrl: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjRkZDNzJDIiBkPSJNMjU2IDBDMTUxLjggMCA0Ni44IDY1LjcgMTcuMiAxODMuMkgyNTZWNUgyNTYwVjE4My4ySDQ5NS40QzQ2NS45IDY1LjcgMzYxLjEgMCAyNTYgMHptLTIyOSA5Ni41QzQ5LjQgMTA5LjUgMTMgMTUzLjIgMTMgMjA0LjRoNDg2LjFjMCAtNTEuMiAtMzcuMi05NC45LTg3LjktMTA4LjFsLTE3NS45IDI2NS42LTE3NS45LTI2NS42eiIvPjxwYXRoIGZpbGw9IiNGRkMyQyIgZD0iTTI1NiA1MTJIMjU2VjUxMkw4MC4xIDI5OC44bDE3NS45IDI2NS42bDE3NS45LTI2NS42TDI1NiA1MTJ6Ii8+PC9zdmc+",
+            designStory: "The central print is a minimalist representation of the **Feather of Ma'at** (Justice and Balance). It symbolizes a return to ethical order and truth.",
+            deepDive: "Tutankhamun, the 'Boy King,' symbolizes a return to balance. His brief but critical reign restored the traditional religious order after the chaos of Akhenaten's monotheism. This mirrors our mission to return balance to the environment through truly sustainable and ethical practices. The discovery of his intact tomb in 1922 revealed unparalleled craftsmanship and timeless design—principles we weave into every stitch, creating garments built for permanence, not disposal.",
             sustainability: {
                 waterSaved: "65%",
                 material: "Organic Hemp Blend",
-                metric: "Each shirt saves 2,100 liters of water compared to conventional cotton.",
+                metric: "Each shirt saves 2,100 liters of water compared to conventional cotton and uses no pesticides.",
                 supplyChain: [
                     "Sourcing: Organically grown hemp fibers from certified sustainable farms.",
                     "Production: Processed in a solar-powered, Fair Trade certified facility.",
@@ -101,9 +100,9 @@
             name: "The Ramesses Power Tee",
             material: "GOTS Certified Organic Cotton",
             artifactID: "AA-EGY-RAM-2025",
-            // Base64 Image data for the Colossal Statue of Ramesses II
-            imageUrl: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAEAAQADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAAAwQBAgUABgf/xAA5EAACAgIBAgUCBQMEAgIDAQACAQIDBBEFEgYxQRMUIjJRUmFxgRQHQgkWQoEzcrEkJEOh8ENj/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAEDAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A9H8f+P3F+nL+Z/g/v/o9Z/r/j+z/l/i+v8Ag/v7f0vj+7/N/m7fT/M+z/o/e+n+V/e+n/i+j/T+O7P3/wBv+z/X/E9X/S93+e7/S/N7/8AP7X2/wC5/v/ANX+5v7v9f8AM+7/o+x9P+c+r/wBD/v7f/R+7/T9r/O+1/wBf6X3/APW/N9v/N+v/AJf63w/S+l8f1f7/wCX7/8Axfu/f/J/m/7P/l/a/n/f8Apf39/wDS/v7f/R/v/wBn/v8A/f/5/wDp/wD/2Q==",
-            designStory: "The powerful print is inspired by the monumental **Khepresh Crown** and the colossal, enduring statues of Ramesses II. It symbolizes strength, longevity, and permanence.",
+            // Base64 SVG Icon: Stylized Uraeus Cobra (Symbol of Royalty/Power)
+            imageUrl: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjRkZDNzJDIiBkPSJNMjQ3IDUuNEMyMzguMyAxLjggMjI4LjktNSA2OC4xIDUuNCA0NC41IDUuNiAyMy4zIDIzLjggMTYuMiA0Ni42QzguNCA3Mi4yIDcuMyAxMDQuNyAxMC4zIDEzNi44YzEwIDU1LjcgMzUuNyA5Ni43IDY0LjMgMTI5LjcgNTMuOCA2Mi4zIDE1MC4zIDE4MC41IDE4Ny41IDI0MC4zIDMxLjMgNTAuMyA1MS45IDEyNS41IDI1LjIgMTcwLjcgLTIwLjEgMzUuNiAtNTkuNyA1Ny4yIC0xMDQuOCA2NC41IC00NS4xIDcuMyAtOTUuNyAxMC43IC0xMzEuOSA0LjggLTY4LjIgLTExLjEgLTEwOC4xIC02MS4xIC0xMTcuNCAtMTY1LjcgLTkuMyAtMTA0LjYgMS43IC0yMTMuOSAxNy4yIC0yNTIuMiAxOS4zIC00Ni44IDU5LjUgLTc3LjYgMTA1LjYgLTc3LjYgMjcuOSAwIDU0LjggNS4zIDgwLjMgMTUuMCIvPjxwYXRoIGZpbGw9IiNGRkMyQyIgZD0iTTI2NS42IDUuNGMxMi4zIDEuMiAyMy4xIDE0LjMgMjkuMiAzMi43IDYuMSA0OC44IDMuOSAxMDAuOSAtMi4xIDE1My44IC0xMC4yIDg5LjEgLTE1LjcgMTY5LjQgLTguOSAyMzYuMiA2LjkgNjYuOCAxMS41IDExNS41IDEwLjMgMTUwLjcgLTEuMiAzNS4yIC0xMi42IDYwLjcgLTMyLjUgNzcuOCAtMjEuMiAxOC40IC01NS40IDI2LjIgLTk0LjIgMzQuNCAtNzcuNSA2LjcgLTE1Ny4yIC0xLjEgLTE5OS40IC0yNS44IC0zNi4yIC0yNC40IC02MC42IC01OS41IC02Ni43IC05MS4xIC0xLjcgLTcuNSAtMS43IC0xNS41IDAgLTI0LjYgNS4xIC0yMy40IDIyLjEgLTQ0LjcgNTQuMiAtNTcuMiAzMi4xIC0xMi41IDY3LjMgLTExLjYgOTguNiAyLjQgMzEuMiAxNCA2MS44IDQyLjEgNzQuMSAxMDcuNSIvPjwvc3ZnPg==",
+            designStory: "The powerful print is inspired by the monumental **Uraeus Cobra** on the Khepresh Crown, symbolizing divine authority, longevity, and permanence.",
             deepDive: "Ramesses II, 'The Great,' reigned for 66 years, a testament to longevity and monumental legacy. Our Ramesses Power Tee is engineered for permanence, reflecting his massive, enduring constructions like Abu Simbel. Just as his monuments resisted time, this GOTS Certified Organic Cotton tee resists wear and tear. We emphasize quality and durability, ensuring this piece stays in your wardrobe—a lasting artifact, not a disposable trend.",
             sustainability: {
                 waterSaved: "75%",
@@ -117,12 +116,6 @@
                 ]
             }
         }
-        // To add a new king, simply add a new object here:
-        /*
-        'cleopatra': {
-             // ... new data
-        }
-        */
     };
 
     // --- 2. CORE APPLICATION LOGIC ---
@@ -146,14 +139,14 @@
             // Display the default welcome screen if no king key is found or if the key is invalid
             htmlContent = `
                 <div class="p-8 text-center min-h-[70vh] flex flex-col justify-center items-center">
-                    <i class="fa-solid fa-qrcode text-gold text-6xl mb-6"></i>
+                    <i class="fa-solid fa-scroll text-gold text-6xl mb-6"></i>
                     <h2 class="text-3xl font-extrabold text-gold mb-3">SCAN YOUR ARTIFACT: WELCOME</h2>
                     <p class="text-gray-400 max-w-sm">
                         Thank you for purchasing Artifact Apparel. To unlock the story,
                         please scan the unique QR Code printed on the label of your garment.
                     </p>
                     <p class="text-gray-500 mt-6 text-sm font-mono">
-                        No story loaded. Please use the complete product URL.
+                        No story loaded. Please use the complete product URL with the hash parameter.
                     </p>
                 </div>
             `;
@@ -169,7 +162,8 @@
             htmlContent = `
                 <!-- IMAGE HERO SECTION -->
                 <div class="relative overflow-hidden w-full h-96">
-                    <img src="${data.imageUrl}" alt="Image of ${data.name} artifact" class="w-full h-full object-cover">
+                    <!-- Base64 SVG Icon embedded directly in the img tag for guaranteed load -->
+                    <img src="${data.imageUrl}" alt="Icon of ${data.name} artifact" class="w-full h-full object-contain p-8 bg-gray-900">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-80"></div>
                     <div class="absolute bottom-0 left-0 p-6">
                         <span class="text-gold text-sm font-semibold uppercase tracking-wider">${data.material}</span>
@@ -196,7 +190,7 @@
                             <div class="text-xs text-gray-400 uppercase tracking-widest">Water Saved</div>
                         </div>
                         <div class="bg-gray-800 p-3 rounded-lg text-center">
-                            <div class="text-xl font-bold text-white mt-1">${data.sustainability.material}</div>
+                            <div class="text-xl font-bold text-white mt-1">${data.sustainability.material.split(" ").slice(0, 2).join(" ")}</div>
                             <div class="text-xs text-gray-400 uppercase tracking-widest">Material Base</div>
                         </div>
                     </div>
@@ -217,7 +211,6 @@
     // --- 3. INITIALIZATION & EVENT LISTENERS ---
 
     // Load content immediately when the page loads
-    // This handles both the full URL scan (with hash) and the default welcome screen (no hash)
     document.addEventListener('DOMContentLoaded', loadContent);
 
     // This handles manual testing by changing the hash in the browser address bar
