@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Artifact Apparel - Wearable History</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tailwind CSS (Using Cache Buster ?v=4 to force fresh download) -->
+    <script src="https://cdn.tailwindcss.com?v=4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Using Inter for a professional, clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -32,20 +31,19 @@
             background-color: #f3f4f6;
         }
         .container-wrapper {
-            max-width: 30rem; /* Tighter width for phone screen focus */
+            max-width: 30rem;
             min-height: 100vh;
             background-color: #fefefe;
         }
         .text-shadow-light {
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
         }
-        /* Custom styling for the Supply Chain Steps */
         .supply-step {
             display: flex;
             align-items: flex-start;
         }
         .supply-step-icon {
-            color: #FFC72C; /* Gold icon */
+            color: #FFC72C;
             font-size: 1.5rem;
             margin-right: 1rem;
         }
@@ -65,10 +63,10 @@
         <section class="relative">
             <div class="h-96 w-full overflow-hidden shadow-lg">
                 <img id="product-image" 
-                     src="https://placehold.co/800x960/0A192F/FFC72C?text=Loading..." 
+                     src="https://placehold.co/800x960/0A192F/FFC72C?text=Loading+Artifact+Image" 
                      alt="Product Artifact Image" 
                      class="w-full h-full object-cover transition duration-500"
-                     onerror="this.onerror=null; this.src='https://placehold.co/800x960/0A192F/FFC72C?text=Image+Not+Found';"
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x960/0A192F/FFC72C?text=IMAGE+ERROR';"
                      loading="lazy">
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
@@ -146,7 +144,8 @@
                 artifactId: "AA-WELCOME-001",
                 designStory: "This page is a dedicated digital gateway, designed to be accessed only via the unique QR code on your garment's tag. The code contains a key that unlocks this specific product's story and sustainable journey.",
                 deepDive: "If you are seeing this message, you haven't scanned a product yet! Our mission is to connect ethical consumption with historical education. We use sustainable materials to create timeless apparel, each linked to an ancient story of power, balance, or creation.",
-                imageText: "Welcome to Artifact Apparel.",
+                imageText: "Welcome to Artifact Apparel. Scan your garment's tag to begin.",
+                // New reliable placeholder image
                 imageUrl: "https://placehold.co/800x960/0A192F/FFC72C?text=SCAN+YOUR+ARTIFACT", 
                 waterSaved: "N/A",
                 material: "N/A",
@@ -161,9 +160,11 @@
                 productName: "The Tut's Legacy Tee | Hemp Blend",
                 artifactId: "AA-EGY-TUT-2025",
                 designStory: "The design features the **Feather of Ma'at**, the Egyptian goddess of truth, order, and justice. This reflects Tutankhamun's legacy of restoring order after his father's religious turmoil. Wearing this artifact is a commitment to balance and conscious action.",
-                deepDive: "Tutankhamun, the 'Boy King,' symbolizes a return to balance. His restoration of traditional religious order mirrors our mission to return balance to the environment through sustainable practices. The discovery of his tomb revealed unparalleled craftsmanship and timeless design—principles we weave into every stitch.",
-                imageText: "Tutankhamun's Gold Mask, an icon of eternal Egyptian craftsmanship.",
-                imageUrl: "http://googleusercontent.com/image_collection/image_retrieval/9374324556239691654",
+                // IMPROVED STORY CONTENT
+                deepDive: "Tutankhamun, the 'Boy King,' is a global symbol of rediscovery. His rise to power signaled a return to Egypt's traditional religious and political order. This restoration of balance mirrors our commitment to bringing **ecological balance** back to the fashion industry. The immense craftsmanship found in his tomb informs our approach: creating objects of lasting beauty and quality, not disposable trends.",
+                imageText: "Tutankhamun's mask, symbolizing eternal craftsmanship and restoration of order.",
+                // New reliable placeholder image for Tutankhamun
+                imageUrl: "https://placehold.co/800x960/FFC72C/0A192F?text=TUTANKHAMUN+MASK+SYMBOL", 
                 waterSaved: "80%",
                 material: "Hemp Blend",
                 chemicalDyes: "0%",
@@ -178,9 +179,11 @@
                 productName: "The Ramesses Power Tee | Organic Cotton",
                 artifactId: "AA-EGY-RAM-2025",
                 designStory: "This print is inspired by the monumental **Khepresh Crown** and the colossal, enduring statues of **Ramesses II**. It symbolizes strength, longevity, and permanence. This piece is built to be a permanent, enduring artifact in your modern wardrobe.",
-                deepDive: "Ramesses the Great reigned for an unprecedented 66 years, known for his relentless dedication to monumental building projects that survive to this day (like Abu Simbel). His legacy of **immense power and stability** is a testament to enduring quality. We mirror this value by using organic materials designed for minimum 5-year wear lifecycle, countering fast fashion.",
-                imageText: "Colossal Statue of Ramesses II at the Great Temple of Abu Simbel, symbolizing permanence.",
-                imageUrl: "http://googleusercontent.com/image_collection/image_retrieval/15945067445690056150",
+                // IMPROVED STORY CONTENT
+                deepDive: "Ramesses the Great reigned for an unprecedented 66 years, constructing massive temples that survive 3,000 years later. His legacy is one of **immense stability and quality**—values directly opposed to fast fashion. By using GOTS-certified organic cotton and a durable construction, we aim to match the longevity of his monuments, ensuring your garment is built for a minimum 5-year wear cycle.",
+                imageText: "Colossal Statue of Ramesses II, symbolizing permanence and stability.",
+                // New reliable placeholder image for Ramesses II
+                imageUrl: "https://placehold.co/800x960/0A192F/FFC72C?text=RAMESSES+STATUE+SYMBOL",
                 waterSaved: "75%",
                 material: "Organic Cotton",
                 chemicalDyes: "0%",
